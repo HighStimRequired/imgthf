@@ -4,6 +4,13 @@ import requests
 from bs4 import BeautifulSoup
 from tkinter import Tk, Label, Entry, Button, filedialog, messagebox, StringVar
 
+# Apply dark mode theme
+dark_bg = "#2e2e2e"  # Dark background
+dark_fg = "#ffffff"  # Light foreground
+button_bg = "#3e3e3e"  # Button background
+button_fg = "#ffffff"  # Button foreground
+
+# Function to fetch images
 def fetch_images():
     url = url_entry.get()
     if not url:
@@ -45,6 +52,7 @@ def fetch_images():
         print(f"An error occurred: {e}")
         messagebox.showerror("Error", f"An error occurred: {e}")
 
+# Function to select folder
 def select_folder():
     folder_selected = filedialog.askdirectory()
     folder_path.set(folder_selected)
@@ -53,18 +61,18 @@ def select_folder():
 app = Tk()
 app.title("Image Fetcher")
 app.geometry("500x200")
+app.configure(bg=dark_bg)  # Set the app's background color
 
 folder_path = StringVar()
 
-Label(app, text="Enter Website URL:").pack(pady=5)
-url_entry = Entry(app, width=50)
+Label(app, text="Enter Website URL:", bg=dark_bg, fg=dark_fg).pack(pady=5)
+url_entry = Entry(app, width=50, bg=dark_bg, fg=dark_fg, insertbackground=dark_fg)
 url_entry.pack(pady=5)
 
-Label(app, text="Select Save Folder:").pack(pady=5)
-Button(app, text="Choose Folder", command=select_folder).pack(pady=5)
+Label(app, text="Select Save Folder:", bg=dark_bg, fg=dark_fg).pack(pady=5)
+Button(app, text="Choose Folder", command=select_folder, bg=button_bg, fg=button_fg).pack(pady=5)
+Label(app, textvariable=folder_path, bg=dark_bg, fg=dark_fg).pack(pady=5)
 
-Label(app, textvariable=folder_path).pack(pady=5)
-
-Button(app, text="Start Download", command=fetch_images).pack(pady=10)
+Button(app, text="Start Download", command=fetch_images, bg=button_bg, fg=button_fg).pack(pady=10)
 
 app.mainloop()
