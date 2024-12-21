@@ -29,8 +29,8 @@ echo Upgrading pip to the latest version...
 python -m pip install --upgrade pip
 
 :: Install required dependencies
-echo Installing dependencies: pyinstaller, requests, and beautifulsoup4...
-pip install pyinstaller requests beautifulsoup4
+echo Installing requests and beautifulsoup4...
+pip install requests beautifulsoup4
 
 :: Check for installation success
 if %errorlevel% neq 0 (
